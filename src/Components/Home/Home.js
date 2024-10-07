@@ -1,15 +1,16 @@
-import React, {useContext} from 'react'
-import './Home.css'
-import pubHome from '../../images/pub-home.jpeg'
-import { GeneralContext } from '../../App'
-import Card from '../Card/Card'
-
+import React, { useContext } from 'react';
+import './Home.css';
+import pubHome from '../../images/pub-home.jpeg';
+import Card from '../Card/Card';
+import { GeneralContext } from '../../App';
+import OneCard from '../Card/OneCard';
 
 const Home = () => {
-    const { products } = useContext(GeneralContext);
-        
+    const { details, data, products } = useContext(GeneralContext);
+
     return (
         <div>
+            {details && data ? <OneCard data={data} /> : null}
             <div className="divImg">
                 <img src={pubHome} alt='pubHome' />
             </div>
@@ -19,7 +20,7 @@ const Home = () => {
                     ))}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

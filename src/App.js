@@ -1,12 +1,14 @@
 import { createContext, useState, useEffect } from 'react';
-import Home from './Components/Home/Home';
 import Navbar from './Components/Navbar/Navbar';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Router from './Router';
 
 export const GeneralContext = createContext();
 
 function App() {
+  const [details, setDetails] = useState(false);
+  const [data, setData] = useState('');
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -19,10 +21,11 @@ function App() {
         })
 }, [])
 
+  
   return (
-    <GeneralContext.Provider value={{products}}>
+    <GeneralContext.Provider value={{details, data, setDetails, setData, products}}>
       <Navbar />
-      <Home />
+      <Router />
     </GeneralContext.Provider>
   );
 }

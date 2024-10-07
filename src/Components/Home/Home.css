@@ -1,8 +1,17 @@
+nav{
+    position: fixed !important;
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 10; 
+    width: 100%; 
+}
 .divImg {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 10px;    
+    padding-top: 80px;
 }
 
 img {
@@ -17,5 +26,62 @@ img {
     width: 95vw;
 }
 .card {
-    width: 400px;
+    width: 300px;
+}
+
+.card .btn {
+    width: 100px;
+}
+
+.oneCardContainer {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 5;
+}
+
+.oneCard {
+    width: 50%;
+    padding: 30px;
+    background-color: #fff; 
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.oneCard img {
+    width: 300px;
+    object-fit: fill;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .oneCard {
+        width: 80%;
+    }    
+    .oneCardHeader{
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .oneCard img {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
 }
