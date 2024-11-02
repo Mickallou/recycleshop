@@ -1,8 +1,11 @@
 import { createContext, useState, useEffect } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 import Router from './Router';
+import ScrollToTop from './ScrollToTop';
+import getUser from './Components/Getting/getUser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const GeneralContext = createContext();
 
@@ -10,6 +13,31 @@ function App() {
   const [details, setDetails] = useState(false);
   const [data, setData] = useState('');
   const [products, setProducts] = useState([]);
+  const [token, setToken] = useState('')
+  const [theUser, setTheUser] = useState(null)
+  
+  const theToken = localStorage.getItem('token')
+  
+  useEffect(() => {
+    if (theToken) {
+      setToken(theToken)
+    }
+  }, [theToken])
+
+  useEffect(() => {
+      if (token) {
+        console.log("Token found:", token);
+        getUser(token)
+          .then((data) => {
+            setTheUser(data);
+          })
+          .catch((error) => {
+            console.error('Error fetching user in TheUserProvider:', error);
+          });    
+        }        
+}    
+, [token]);
+
 
   useEffect(() => {
     axios.get('http://localhost:1601/products')
@@ -23,9 +51,11 @@ function App() {
 
   
   return (
-    <GeneralContext.Provider value={{details, data, setDetails, setData, products}}>
+    <GeneralContext.Provider value={{details, data, setDetails, setData, products, setToken, token, theUser}}>
       <Navbar />
+      <ScrollToTop />
       <Router />
+      <ToastContainer />
     </GeneralContext.Provider>
   );
 }

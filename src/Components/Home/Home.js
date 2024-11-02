@@ -15,7 +15,7 @@ const Home = () => {
                 <img src={pubHome} alt='pubHome' />
             </div>
             <div className="container d-flex flex-wrap gap-3 justify-content-center">
-                    {products.map(product => (
+                    {products.filter(product => product.sold === false).map(product => (
                         <Card key={product._id} data={product} />
                     ))}
             </div>

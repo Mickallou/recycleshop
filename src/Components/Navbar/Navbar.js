@@ -1,8 +1,20 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
+import { GeneralContext } from '../../App'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import './Navbar.css'
 
 const Navbar = () => {
+    const {theUser} = useContext(GeneralContext)
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        navigate('/');
+        window.location.reload();
+        toast.info('You are now logged out!');
+    }
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary ">
@@ -20,31 +32,48 @@ const Navbar = () => {
                                 <Link className="nav-link active" aria-current="page" to="/men">Men</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Women</Link>
+                                <Link className="nav-link active" aria-current="page" to="/women">Women</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Kids</Link>
+                                <Link className="nav-link active" aria-current="page" to="/kids">Kids</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Accessories</Link>
+                                <Link className="nav-link active" aria-current="page" to="/accessories">Accessories</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                                <Link className="nav-link active" aria-current="page" to="/categoryHome">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Electronics</Link>
+                                <Link className="nav-link active" aria-current="page" to="/eletronics">Electronics</Link>
                             </li>
                         </ul>
-                        <div className="d-flex flex-column flex-lg-row align-items-center">
-                            <form className="d-flex mb-2 mb-lg-0" role="search">
-                                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <div className="d-flex flex-column flex-lg-row align-items-center navPart2">
+                            {theUser ?
+                                <ul className="navbar-nav ms-lg-3 pe-3">
+                                    <li className="nav-item dropdown">
+                                        <p className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Hi {theUser.name.first}
+                                        </p>
+                                        <ul className="dropdown-menu">
+                                            <li><Link to='/myCard' className="dropdown-item">My Products</Link></li>
+                                            <li><p className="dropdown-item" >Another action</p></li>
+                                            <li><hr className="dropdown-divider" /></li>
+                                            <li><p className="dropdown-item" onClick={logout}>Logout</p></li>
+                                        </ul>
+                                    </li>                            
+                                </ul>
+                            : <ul className="navbar-nav ms-lg-3 pe-2">
+                                <li className="nav-item">
+                                    <Link className="nav-link active" aria-current="page" to="/signup">Signup</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
+                                </li>
+                            </ul>}
+                            <form className="d-flex pe-4 mb-2 mb-lg-0" role="search">
+                                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                                 <button className="btn btn-outline-primary" type="submit">Search</button>
                             </form>
-                            <ul className="navbar-nav ms-lg-3">
-                                <li className="nav-item">
-                                    <Link className="nav-link active" aria-current="page" to="/">Login</Link>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>

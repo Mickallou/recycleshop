@@ -59,6 +59,17 @@ img {
     margin-bottom: 15px;
 }
 
+.oneCard .card-body{
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.oneCard .card-body h5{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
 .closeButton {
     position: absolute;
     top: 0;
@@ -69,6 +80,11 @@ img {
     padding: 5px;
     cursor: pointer;
 }
+
+.dropdown{
+    margin-bottom: -15px;
+}
+
 @media (max-width: 768px) {
     .oneCard {
         width: 80%;
@@ -84,4 +100,15 @@ img {
 }
 
 @media (max-width: 576px) {
+    .navPart2{
+        flex-direction: column-reverse !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .dropdown{
+        margin-bottom: 10px;
+    }
+    
 }
+

@@ -34,9 +34,25 @@ const OneCard = ({ data }) => {
                 <div className='closeButton'>
                     <button className='btn btn-secondary btn-sm' onClick={() => setDetails(false)}>X</button>
                 </div>
-                <div className='oneCardHeader d-flex justify-content-center gap-4'>
+                <div className='oneCardHeader d-flex justify-content-center gap-5'>
                     {product.image && product.image.url && product.image.url.length > 0 ? (
-                        <img src={product.image.url[0]} className="card-img-top" alt={product.image.alt || 'Product image'} />
+                        <div id="carouselExample" className="carousel slide">
+                            <div className="carousel-inner">
+                                {product.image.url.map((image, index) => (
+                                    <div className={`carousel-item active`}>
+                                        <img src={image} alt={image.alt} />
+                                    </div>
+                                ))}     
+                            </div>
+                            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span className="visually-hidden">Previous</span>
+                            </button>
+                            <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span className="visually-hidden">Next</span>
+                            </button>
+                        </div>
                     ) : (
                         <div>No image available</div>
                     )}
