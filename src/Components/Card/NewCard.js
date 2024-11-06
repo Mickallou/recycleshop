@@ -116,16 +116,25 @@ const NewProduct = () => {
                         />
                     </div>
                     <div className="form-group mb-3">
-                        <label htmlFor="category">Category</label>
-                        <input
+                        <label htmlFor="category" className='form-label'>Category</label>
+                        <select
                             type="text"
-                            className="form-control"
+                            className="form-select"
                             id="category"
                             placeholder="Enter category"
                             value={product.category}
                             onChange={handleChange}
                             required
-                        />
+                        >
+                            <option disabled value="">Select a category</option>
+                            <option value="Men">Men</option>
+                            <option value="Women">Women</option>
+                            <option value="Kids">Kids</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Home">Home</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </div>
                     <div className="form-group mb-3">
                         <label htmlFor="phone">Contact Phone</label>

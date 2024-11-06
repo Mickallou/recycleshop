@@ -32,7 +32,7 @@ function App() {
             setTheUser(data);
           })
           .catch((error) => {
-            console.error('Error fetching user in TheUserProvider:', error);
+            toast.error('Error fetching user in TheUserProvider:', error);
           });    
         }        
 }    

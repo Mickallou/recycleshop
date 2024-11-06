@@ -13,7 +13,7 @@ const MyCard = () => {
                 {details && data ? <OneCard data={data}/> : null}
                 <AddProduct />
                 <div className='container d-flex flex-wrap gap-3 justify-content-center mt-5'>
-                    {products.filter(product => product.seller === theUser?._id).map(product => (
+                    {products.filter(product => product.seller === theUser?._id && product.sold === false).map(product => (
                         <Card key={product._id} data={product} />
                     ))}
                 </div>

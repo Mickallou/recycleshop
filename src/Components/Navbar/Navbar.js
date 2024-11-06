@@ -56,8 +56,14 @@ const Navbar = () => {
                                         </p>
                                         <ul className="dropdown-menu">
                                             <li><Link to='/myCard' className="dropdown-item">My Products</Link></li>
-                                            <li><p className="dropdown-item" >Another action</p></li>
+                                            <li><Link to='/sold' className='dropdown-item'>Solded</Link></li>
                                             <li><hr className="dropdown-divider" /></li>
+                                            {theUser.isAdmin &&
+                                            <>
+                                                <li><Link to={'/admin'} className='dropdown-item'>Users Managers</Link></li>
+                                                <li><hr className="dropdown-divider" /></li>
+                                            </>
+                                            }
                                             <li><p className="dropdown-item" onClick={logout}>Logout</p></li>
                                         </ul>
                                     </li>                            

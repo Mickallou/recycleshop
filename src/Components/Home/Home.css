@@ -85,6 +85,17 @@ img {
     margin-bottom: -15px;
 }
 
+.solded {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.solded h1{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
 @media (max-width: 768px) {
     .oneCard {
         width: 80%;

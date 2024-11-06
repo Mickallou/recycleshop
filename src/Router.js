@@ -11,6 +11,8 @@ import Login from './Components/Auth/Login'
 import Signup from './Components/Auth/Signup'
 import MyCard from './Components/Card/MyCard'
 import NewProduct from './Components/Card/NewCard'
+import SoldCard from './Components/Card/SoldCard'
+import AdminMane from './Components/Admin/AdminMane'
 
 const Router = () => {
     return (
@@ -26,6 +28,8 @@ const Router = () => {
             <Route path='/signup' element={<Signup />} />
             <Route path='/myCard' element={<MyCard />} />
             <Route path='/newCard' element={<NewProduct />} />
+            <Route path='/sold' element={<SoldCard />} />
+            <Route path='/admin' element={<AdminMane />} />
         </Routes>
     )
 }
